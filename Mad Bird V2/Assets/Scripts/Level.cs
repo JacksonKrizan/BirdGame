@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Level : MonoBehaviour
 {
+    private static int _nextLevelIndex = 1;
     private Enemy [] _enemies;
 
     private void OnEnable()
@@ -14,13 +16,14 @@ public class Level : MonoBehaviour
         foreach(Enemy enemy in _enemies) 
         {
             if (enemy!= null)
-                {
                     return;
-                }
+        }
 
             Debug.Log("You killed all Enemies");
 
-            //string nextlevelName = ""
-        }
+            _nextLevelIndex++;
+            string nextlevelName = "Level1" + _nextLevelIndex;
+            SceneManager.LoadScene(nextlevelName);
+        
     }
 }
